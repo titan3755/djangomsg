@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'mainapp/message.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=KoHo&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>Django Website - {{title}}</title>
+    {% else %}
+    <title>Django Website</title>
+    {% endif %}
+</head>
+<body>
+    <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
+            <div class="container-fluid">
+            <a class="navbar-brand h1 text-white" href="#">Messaging Utility</a>
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon text-white"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/about">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    More Options
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item text-white" href="#">Coming Soon!</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="" tabindex="-1" aria-disabled="true">More</a>
+                </li>
+                </ul>
+                <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+            </div>
+        </nav>
+    </div>
+    
+        <div class="container-fluid">
+            <div class="row">
+                <div class="main-content">
+                    <h1>Simple Messaging Utility</h1>
+                    <p class="blockquote" id="description">Send a message to the server for temporary storage! Don't send any personal information as the messages are public.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+        <div class="container-fluid">
+            <form action="" method="POST"> {% csrf_token %}
+                <div class="main-cont">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Message</span>
+                        <input type="text" name="msg_content" class="form-control" placeholder="Enter message here" id="main-input">
+                    </div>
+                    <div class="btn-container">
+                    <button class="btn btn-success" type="submit" id="form-btn">Click to submit</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="form-btn">
+                        View Messages
+                    </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+
+        
+
+        
+
+
+
+    <!-- Modal -->
+    <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Last Message</h5>
+    </div>
+    <div class="modal-body">
+        <p class="blockquote">{{content}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+    </div>
+    </div>
+</div>
+</div>
+    
+    <script src="{% static 'mainapp/message.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>
